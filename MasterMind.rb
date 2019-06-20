@@ -27,14 +27,12 @@ class Word
   end
 
   def self.no_duplicates(word)
-    word.split(//).each do |letter|
-      return false if word.count(letter.to_s) < 1
-    end
-    true
+    # Checks if all characters in the word appear one or less times
+    ("a".."z").all?{|char| word.count(char) <= 1}
   end
 
   def self.valid_characters_used(word)
-    word.split(//).each do |letter|
+    word.split('').each do |letter|
       return false unless LETTERS.include? letter
     end
     true
@@ -116,7 +114,7 @@ class Game
       guess = gets.to_s.chomp.downcase.strip
       if !Word.valid(guess)
         puts "Invalid input. Guesses must be 5 characters long and contain no
-        duplicate letters"
+        duplicate letters or symbols"
       else
         guesses += 1
         give_feedback(guess)
