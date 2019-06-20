@@ -23,7 +23,7 @@ class Word
   # Checks if word supplied to the function is a valid length
   def self.valid_length(word)
     # Checks if word supplied to the function is five characters long
-    word.split(//).size == 5
+    word.length == 5
   end
 
   def self.no_duplicates(word)
