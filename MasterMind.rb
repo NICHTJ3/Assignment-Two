@@ -7,8 +7,7 @@
 # Trent Nicholson                        #
 ##########################################
 
-# TODO: Check this is correct casing for ruby
-# Constants for gameplay
+# Constants for Game play
 NUMBER_OF_ROUNDS = 1
 WORD_FILE_LOCATION = 'mastermindWordList.txt'
 
@@ -137,7 +136,7 @@ game = Game.new
 loop do
   system 'clear'
   game.gen_new_word
-  game.play(10)
+  game.play(NUMBER_OF_ROUNDS)
   print 'Do you want to play again? '
   play_again = gets.chomp.downcase.strip
   break if play_again != 'y'
