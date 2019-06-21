@@ -57,7 +57,6 @@ class Game
     puts '	. miss'
   end
 
-  # TODO: Fix asssignment branch length
   def give_feedback(word)
     print 'Feedback: '
     word.chomp.chars.each_with_index do |char, index|
