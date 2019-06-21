@@ -27,12 +27,12 @@ class Word
 
   def self.no_duplicates(word)
     # Checks if all characters in the word appear one or less times
-    ("a".."z").all?{|char| word.count(char) <= 1}
+    ('a'..'z').all?{ |char| word.count(char) <= 1 }
   end
 
   def self.valid_characters_used(word)
     word.split('').each do |letter|
-      return false unless LETTERS.include? letter
+      return false unless ('a'..'z').include? letter
     end
     true
   end
@@ -40,7 +40,6 @@ end
 
 # TODO: Extract this to another file
 class Game
-  attr_accessor :current_word
   attr_accessor :words
 
   def instructions
@@ -112,8 +111,8 @@ class Game
       # converts it to a string to avoid enter breaking the game
       guess = gets.to_s.chomp.downcase.strip
       if !Word.valid(guess)
-        puts "Invalid input. Guesses must be 5 characters long and contain no
-        duplicate letters or symbols"
+        puts 'Invalid input. Guesses must be 5 characters long and contain no
+        duplicate letters or symbols'
       else
         guesses += 1
         give_feedback(guess)
@@ -121,9 +120,9 @@ class Game
       end
     end
     if correct
-      puts "Congratulations you guessed it :)"
+      puts 'Congratulations you guessed it :)'
     else
-      puts "Better luck next time :("
+      puts 'Better luck next time :('
     end
   end
 end
@@ -132,10 +131,11 @@ end
 game = Game.new
 game.words = Game.read_words_from_file_if_exists
 
-begin
+loop do
   system 'clear'
   game.gen_new_word
   game.play(10)
   print 'Do you want to play again? '
   play_again = gets.chomp.downcase.strip
-end until play_again != 'y'
+  break if play_again != 'y'
+end
