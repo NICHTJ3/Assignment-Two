@@ -42,6 +42,11 @@ end
 class Game
   attr_accessor :words
 
+  def initialize
+    @words = read_words_from_file_if_exists
+    gen_new_word
+  end
+
   def instructions
     puts 'Instructions:'
     puts '	The computer will generate a random word,'
@@ -56,9 +61,9 @@ class Game
   def give_feedback(word)
     print 'Feedback: '
     word.chomp.chars.each_with_index do |char, index|
-      if char == current_word.chomp.chars[index]
-        print current_word.chomp.chars[index]
-      elsif current_word.chomp.include? char
+      if char == @current_word.chomp.chars[index]
+        print @current_word.chomp.chars[index]
+      elsif @current_word.chomp.include? char
         print '?'
       else
         print '.'
@@ -76,7 +81,7 @@ class Game
   end
 
   # Reads the words from the mastermindWordList.txt file if it exists
-  def self.read_words_from_file_if_exists
+  def read_words_from_file_if_exists
     if File.exist?(WORD_FILE_LOCATION)
       read_words_from_file
     else
@@ -85,7 +90,7 @@ class Game
     end
   end
 
-  def self.read_words_from_file
+  def read_words_from_file
     # Creates an empty array for me to place valid words in
     words = []
     # Open the file for reading and close it when this block is finished
@@ -129,7 +134,6 @@ end
 
 # This section is the entry point kind of like Main in cpp
 game = Game.new
-game.words = Game.read_words_from_file_if_exists
 
 loop do
   system 'clear'
