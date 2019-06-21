@@ -11,7 +11,6 @@
 # Constants for gameplay
 NUMBER_OF_ROUNDS = 1
 WORD_FILE_LOCATION = 'mastermindWordList.txt'
-LETTERS = 'abcdefghijklmnopqrstuvwxyz'
 
 # TODO: Extract this to another file
 class Word
