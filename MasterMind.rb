@@ -37,7 +37,7 @@ class Word
   # no duplicate letters
   def self.no_duplicates(word)
     # Iterates over the alphabet and checks if the current letter in the
-    # alphabet only occurs in the string once
+    # alphabet only occurs in the string once or less times
     ('a'..'z').all? { |char| word.count(char) <= 1 }
   end
 
