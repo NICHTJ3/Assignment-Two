@@ -11,6 +11,8 @@
 NUMBER_OF_ROUNDS = 10
 WORD_FILE_LOCATION = 'mastermindWordList.txt'
 
+# This class is a utilities class for checking if a word is valid all functions
+# are accessed like static functions ie Word.function_name
 class Word
   # Defines a static like method called valid to check if the word is valid in
   # all respects of the game
@@ -36,7 +38,7 @@ class Word
   def self.no_duplicates(word)
     # Iterates over the alphabet and checks if the current letter in the
     # alphabet only occurs in the string once
-    ('a'..'z').all? do |char| word.count(char) <= 1 end
+    ('a'..'z').all? { |char| word.count(char) <= 1 }
   end
 
   # Defines a static like method called valid_characters_used to check if the
@@ -54,11 +56,12 @@ class Word
   end
 end
 
+# This class is the game class it contains all methods required to run the game
 class Game
   # The constructor like method for game that is called when a new game is
   # created
   def initialize
-  # Set the private variable words to the valid words from the text file if it
+    # Set the private variable words to the valid words from the text file if it
     # exists
     @words = read_words_from_file_if_exists
   end
@@ -87,7 +90,7 @@ class Game
     # same or not
     guess.chomp.chars.each_with_index do |char, index|
       # Checks if the character in the users guess is the same as the character
-      # in the current_word 
+      # in the current_word
       if char == @current_word.chomp.chars[index]
         print @current_word.chomp.chars[index]
       # Prints a question mark if the character in the users guess is not the
