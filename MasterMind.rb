@@ -8,31 +8,39 @@
 ##########################################
 
 # Constants for Game play
-NUMBER_OF_ROUNDS = 1
+NUMBER_OF_ROUNDS = 10
 WORD_FILE_LOCATION = 'mastermindWordList.txt'
 
 # TODO: Extract this to another file
 class Word
+  # Defines a static like method called valid to check if the word is valid in all respects of the game
   def self.valid(word)
+    # Remove new line from end of word and change it to lowercase to avoid any issues with checking if the word contains no duplicates or incorrect characters
     word = word.chomp.downcase
+    # Returns a check if the word is a valid length has no duplicates and is only composed of valid characters
     valid_length(word) && no_duplicates(word) && valid_characters_used(word)
   end
 
-  # Checks if word supplied to the function is a valid length
+  # Defines a static like method called valid_length to check if word supplied to the function is a valid length
   def self.valid_length(word)
     # Checks if word supplied to the function is five characters long
     word.length == 5
   end
 
+  # Defines a static like method called no_duplicates to check if the word has no duplicate letters
   def self.no_duplicates(word)
-    # Checks if all characters in the word appear one or less times
-    ('a'..'z').all? { |char| word.count(char) <= 1 }
+    # Iterates over the alphabet and checks if the current letter in the alphabet only occurs in the string once
+    ('a'..'z').all? do |char| word.count(char) <= 1 end
   end
 
+  # Defines a static like method called valid_characters_used to check if the word is composed only of valid characters
   def self.valid_characters_used(word)
+    # Iterates over every character in the given word so I can test if the character is in the alphabet
     word.split('').each do |letter|
+      # Returns false if the letter currently being evaluated is not in the alphabet
       return false unless ('a'..'z').include? letter
     end
+    # Returns true if this method has not already returned
     true
   end
 end
