@@ -27,7 +27,7 @@ class Word
 
   def self.no_duplicates(word)
     # Checks if all characters in the word appear one or less times
-    ('a'..'z').all?{ |char| word.count(char) <= 1 }
+    ('a'..'z').all? { |char| word.count(char) <= 1 }
   end
 
   def self.valid_characters_used(word)
