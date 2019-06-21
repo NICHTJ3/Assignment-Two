@@ -112,6 +112,7 @@ class Game
   end
 
   def play(num_of_rounds)
+    gen_new_word
     correct = false
     guesses = 0
     instructions
@@ -138,12 +139,12 @@ class Game
   end
 end
 
-# This section is the entry point kind of like Main in cpp
-game = Game.new
+# This section is the entry point kind of like Main in CPP
 
+# Create a new instance of game called new
+game = Game.new
 loop do
   system 'clear'
-  game.gen_new_word
   game.play(NUMBER_OF_ROUNDS)
   print 'Do you want to play again? '
   play_again = gets.chomp.downcase.strip
