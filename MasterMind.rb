@@ -11,7 +11,6 @@
 NUMBER_OF_ROUNDS = 10
 WORD_FILE_LOCATION = 'mastermindWordList.txt'
 
-# TODO: Extract this to another file
 class Word
   # Defines a static like method called valid to check if the word is valid in all respects of the game
   def self.valid(word)
@@ -45,7 +44,6 @@ class Word
   end
 end
 
-# TODO: Extract this to another file
 class Game
   attr_accessor :words
 
