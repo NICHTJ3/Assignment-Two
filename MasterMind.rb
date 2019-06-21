@@ -49,7 +49,6 @@ class Game
 
   def initialize
     @words = read_words_from_file_if_exists
-    gen_new_word
   end
 
   def instructions
